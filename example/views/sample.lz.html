@@ -1,0 +1,16 @@
+@{
+	layout = "~/sample.template.lz.html";
+	viewState.title = "Search Results";
+}
+
+@section welcome {
+	<h1>Search Results</h1>
+}
+
+<p>Your search for for <a href="/search/?q=@uri(model.terms)">@model.terms</a> resulted in @(model.searchResults.length) results:</p>
+
+<div class="results">
+	@for (result in model.searchResults) {
+		partial('~/result.lz.html', result);
+	}
+</div>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>@(viewState.pageName || 'Welcome!')</title>
+	</head>
+	<body>
+
+	@render('welcome')
+
+	@body()
+
+	@render('footer', () -> <div class="footer">&copy; 2015</div>)
+
+	</body>
+</html>

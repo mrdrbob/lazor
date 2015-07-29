@@ -1,0 +1,29 @@
+{
+  "name": "lazor",
+  "version": "1.0.0",
+  "description": "A razor-inspired javascript view engine",
+  "main": "lib/lazor.js",
+  "author": "Bob Davidson <bob@pageofbob.com>",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://raw.github.com/mrdrbob/lazor/master/LICENSE"
+    }
+  ],
+  "files": [
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "ent": "^2.2.0",
+    "parse-ls": "^1.0.8"
+  },
+  "devDependencies": {
+    "LiveScript": "^1.3.1",
+    "grunt": "^0.4.5",
+    "grunt-livescript": "^0.5.4",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.5"
+  }
+}
