@@ -1,9 +1,10 @@
 { is-array, inspect } = require 'util'
 encode = require 'ent/encode'
+vp = require './io/virtual-path'
 
-module.exports = (compile) ->
-	execute = (view-path, model = {}, view-state = {}, parent = null) ->
-		
+module.exports = (compile, globals = {}) ->
+	execute = (raw-path, model = {}, view-state = {}, parent = null) ->
+		view-path = vp.parse raw-path
 		view-function = compile view-path
 		output = []
 
@@ -26,7 +27,7 @@ module.exports = (compile) ->
 		body = -> raw parent.body-text
 		render = (section, fallback) ->
 			if parent.sections[section]
-				section-text = parent.sections[section] runtime, view-state, model
+				section-text = parent.sections[section] runtime, view-state, model, {}
 				''
 			else
 				if typeof fallback == \function
@@ -34,13 +35,13 @@ module.exports = (compile) ->
 				''
 
 		partial = (partial-path, partial-model = null) ->
-			result = execute partial-path, partial-model, view-state
+			result = execute partial-path, partial-model, view-state, null
 			write (raw result)
 			''
 
 		runtime = { raw, write, body, render, partial, json: JSON.stringify, uri: encodeURIComponent }
 
-		result = view-function runtime, view-state, model
+		result = view-function runtime, view-state, model, globals
 		result.parent = parent
 
 		if result.layout

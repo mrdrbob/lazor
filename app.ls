@@ -1,4 +1,8 @@
-view = (require './src/lazor') './example/views', './example/temp'
+globals = {
+	log: -> console.log it; ''
+}
+
+view = (require './src/lazor') './example/views', './example/temp', globals
 
 model = 
 	terms: 'about & stuff'

@@ -1,11 +1,15 @@
 @{
 	layout = "~/sample.template.lz.html";
 	viewState.title = "Search Results";
+	console.log(globals);
+	console.log(log);
 }
 
 @section welcome {
 	<h1>Search Results</h1>
 }
+
+@log(model)
 
 <p>Your search for for <a href="/search/?q=@uri(model.terms)">@model.terms</a> resulted in @(model.searchResults.length) results:</p>
 
